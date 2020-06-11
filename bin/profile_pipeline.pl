@@ -4,7 +4,6 @@ use warnings;
 use DBI;
 use Getopt::Long;
 
-#### Yizhou Yin, 25JAN2018 ####
 #### take in a list of mutation, two possibilities:
 #### 1) When mutation is precomputed, compile feature, run SVM, and output score
 #### 2) When mutation is not precomputed, do PSI-BLAST, compute and update table, run SVM, and output score
