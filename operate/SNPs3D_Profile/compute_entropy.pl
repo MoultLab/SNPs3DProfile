@@ -31,7 +31,7 @@ my $mysqldb = $ARGV[6];
 my $path;
 BEGIN { $path = $ARGV[7] };
 my $dbserver = $ARGV[8];
-use lib "/home/webmaster/SNPs3D_Profile_20200505_Test/operate/SNPs3D_Profile";
+use lib "$path/operate/SNPs3D_Profile";
 use PsiPsr;
 use Column;
 
@@ -46,11 +46,11 @@ system("mkdir -p $working/prof_lib/entropy");
 my $parser = PsiPsr->new("$psi_path/$refseq.psi", "new4", 1, "$working/prof_lib/entropy/$log");
 my $cols = Column->new($parser);
 my $seq_ac = $refseq;
-my $mean = $cols->{"mean"};	## could be null
-my $std = $cols->{"std"};	## could be null
+my $mean = $cols->{"mean"};
+my $std = $cols->{"std"};
 my $L_outlier = $parser->{"L_outlier"};
 my $H_outlier = $parser->{"H_outlier"};
-my $hits = scalar keys %{$parser->{"selected"}};	## could be null
+my $hits = scalar keys %{$parser->{"selected"}};
 my $mean_depth = 0;
 
 # check if query index is right #

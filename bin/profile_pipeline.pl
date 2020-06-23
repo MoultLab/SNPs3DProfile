@@ -20,19 +20,18 @@ if ($#ARGV < 0) {
 }
 
 my $model = "HWUL2";
+my $dbserver;
+my $mysqldb;
+my $table = "SNPs3D_Profile_2017_precomputed_psimtx_500_1_0_JAN2018";
 my $dbuser;
 my $dbpass;
-my $adpass;
-my $log = "log.profile_pipeline";
-my $list;
-my $rpb = 1;
-my $output = "pred_HWUL2.txt";
 my $blastbin;
 my $blastdb;
-my $mysqldb = "SNPs3D_Dev";
-my $table = "SNPs3D_Profile_2017_precomputed_psimtx_500_1_0_JAN2018";
-my $dbserver;
+my $rpb = 1;
 my $path; 
+my $list;
+my $output = "pred_HWUL2.txt";
+my $log = "log.profile_pipeline";
 
 ## Get options
 GetOptions('dbserver=s' => \$dbserver, 'mysqldb=s' => \$mysqldb,'table=s' => \$table, 'dbuser=s' => \$dbuser, 'dbpass=s' => \$dbpass,'blastbin=s' => \$blastbin,'blastdb=s' => \$blastdb, 'run_psi_blast=i' => \$rpb, 'path=s' => \$path, 'list=s' => \$list, 'output=s' => \$output, 'log=s' => \$log); 
@@ -50,7 +49,7 @@ if (not defined $blastdb)
 {
 	$blastdb = "$path/profile_data/BLASTDB/nr";
 }
-
+print "BLASTDB is $blastdb \n BLASTbin is $blastbin\n";
 open (my $l, ">$working/$log") || die "Cannot open $working/$log: $!";
 
 ## Read list of proteins
@@ -121,7 +120,6 @@ if ($rpb eq 0) {
 	system("perl $bin/compile_features.pl $dbuser $dbpass $working $list $mysqldb $table $dbserver");	
 	print $l "SVM_CLASSIFY\n";
 	system("$path/third_party_apps/svm_light/svm_classify $working/total.data $modelpath/$model $working/pred_$model\_raw > log.svm_classsify_$model");
-
 	print $l "WRITING RESULTS\n";
 	system("perl $bin/glue.pl $working/total.index pred_$model\_raw $output");
 }
