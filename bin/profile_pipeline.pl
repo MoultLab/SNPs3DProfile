@@ -49,7 +49,7 @@ if (not defined $blastdb)
 {
 	$blastdb = "$path/profile_data/BLASTDB/nr";
 }
-print "BLASTDB is $blastdb \n BLASTbin is $blastbin\n";
+
 open (my $l, ">$working/$log") || die "Cannot open $working/$log: $!";
 
 ## Read list of proteins
