@@ -44,7 +44,6 @@ if (not defined $blastbin)
 {
 	$blastbin = "$path/third_party_apps/ncbi-blast-2.2.30+/bin";
 }
-
 if (not defined $blastdb)
 {
 	$blastdb = "$path/profile_data/BLASTDB/nr";
