@@ -43,8 +43,8 @@ Ezra Cho - tested pipeline, packaged dependencies, shipped code to GitHub, gener
 
 ## 7. Publication
 <SNPs3D papers APA citation; 2 excluding Stability paper.  Hyperlink papers >
-  
-  Yue, P., &amp; Moult, J. (2006). Identification and Analysis of Deleterious Human SNPs. Journal of Molecular Biology, 356(5), 1263-1274. [doi:10.1016/j.jmb.2005.12.025](https://pubmed.ncbi.nlm.nih.gov/16412461/)
-  Yue, P., Melamud, E., & Moult, J. (2006).  SNPs3D: candidate gene and SNP selection for association studies.  BMC Bioinformatics, 7, 166. 
+
+Yue, P., &amp; Moult, J. (2006). Identification and Analysis of Deleterious Human SNPs. Journal of Molecular Biology, 356(5), 1263-1274. [doi:10.1016/j.jmb.2005.12.025](https://pubmed.ncbi.nlm.nih.gov/16412461/) <br/>
+Yue, P., Melamud, E., & Moult, J. (2006).  SNPs3D: candidate gene and SNP selection for association studies.  BMC Bioinformatics, 7, 166. 
  [doi:doi.org/10.1186/1471-2105-7-166](https://pubmed.ncbi.nlm.nih.gov/16551372/)
 
