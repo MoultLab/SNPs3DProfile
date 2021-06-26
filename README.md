@@ -15,7 +15,7 @@ SNPs3DProfile is [open source?] and is released under the [lisence?] liscence
 ## 4. Installation
 Download link for SNPs3DProfile - [https://github.com/MoultLab/SNPs3DProfile](https://github.com/MoultLab/SNPs3DProfile)
 ### 4.1 Third party tools
-The third party applications and database can be found at <link>.  The two applications should be placed in ```/path/to/SNPs3DProfile/third_party_apps``` while the database should be placed in ```/path/to/SNPs3DProfile/profile_data```
+The third party applications and database can be found at /moulthome/choe/third_party_apps.tar.gz and /moulthome/choe/profile_data.tar.gz.  The two applications should be placed in ```/path/to/SNPs3DProfile/third_party_apps``` while the database should be placed in ```/path/to/SNPs3DProfile/profile_data```
 
 ## 5. Running Script
 SNPs3DProfile can now be run as follows: <br/>
