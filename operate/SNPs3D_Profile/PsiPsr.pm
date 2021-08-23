@@ -9,7 +9,7 @@ our @EXPORT_OK;
 our $LOW_IDEN = 0.3;
 our $HIGH_IDEN = 0.9;
 our $COVERAGE = 0.5;
-our $LINE_LENGTH = 60;
+our $LINE_LENGTH = 60;  # Anything above 62 will cause an error
 
 # ======================== #
 # read psi-blast output    #
@@ -46,12 +46,11 @@ sub new {
 	#$self->{"aln_len"} = 0; ## length of one alignment line
 	$self->{"L_outlier"} = 0;	## number of hits that fail the low_iden filter
 	$self->{"H_outlier"} = 0;	## number of hits that fail the high_iden filter
-	
+
 	my $file = shift @_;
 	my $outfm = shift @_;
 	my $round = shift @_;
 	my $logfile = shift @_;
-		
 	open (my $l, ">>$logfile") || die;
 	$self->{"log"} = $l;
 	
@@ -254,10 +253,10 @@ sub filter_o6 {
 	my %closeid;
 	$closeid{'QUERY'} = 1;
 	foreach my $key (keys %{$self->{"full"}}) {
-		if ($key ne 'QUERY') {
-
+																												# print"<$key>";
+		if ($key ne 'QUERY') { 
 ## !!! the algorithm below rank the duplicat hits of the same refseq by its sequence identity to the query sequence, this make more sense to me but is not the same as in the previous codes, so will not be used here --- Yizhou ##
-=begin			
+=pod			
 			
 			my $rep = 0;
 			my $max = 0;
@@ -286,7 +285,6 @@ sub filter_o6 {
 			## this algorithm only take the top of the duplicate hits (presumably ranked by e-value as the only representative, and if it doesn't pass the filters, the algorithm won't try its other duplicates ##
 			my @sorted = sort {$a <=> $b} keys %{$self->{"full"}->{$key}};
 			my ($idp, $same, $length) = $self->id_o6('QUERY', 0, $key, $sorted[0]);
-
 #if (! defined $same) {								## DEBUG
 #print "key\t$key\nsorted[0]\t$sorted[0]\nidp\t$idp\nlength\t$length\n\n";	## DEBUG
 #for (my $i = 0; $i < $self->{"blk"}; $i ++) {					## DEBUG
@@ -296,7 +294,6 @@ sub filter_o6 {
 #}										## DEBUG
 #exit -1;									## DEBUG
 #}										## DEBUG
-
 			if ($idp >= $LOW_IDEN) {
 				push(@close, $key);
 				$closeid{$key} = $idp;
@@ -384,7 +381,7 @@ sub id_o6 {
 		my $start = 0;
 		my $stop = $#q;
 		my $mark = 1;
-		for (my $i = 0; $i <= $#q; $i++) {
+		for (my $i = 0; $i <= $#q; $i++) {	
 			if ($mark && ($q[$i] eq '-' || $t[$i] eq '-')) {
 				$start++;
 			}
@@ -408,9 +405,8 @@ sub id_o6 {
 			else {
 				last;
 			}
-		}	
-		###########################################################
-		
+		}
+		###########################################################	
 		my $same = 0;
 		my $lenq = $stop - $start + 1;
 		for (my $i = $start; $i <= $stop; $i++) {
@@ -507,7 +503,6 @@ sub reader_n4 {
 	my $last_substr;
 	my $qy;
 	my $nqy = 0;
-	
 	open (my $f, $file) || die;
 	while (<$f>) {
 		$count++;
@@ -519,17 +514,28 @@ sub reader_n4 {
 				$on = 0;
 			}
 		}
+
 		if ($on && $_ =~ m/^Query_1/) {
 			$qy = $_;
 			$nqy++;
 		}
-		if ($on && $_ =~ m/^gi\|(\d+)\|/) {
+		if ($on && $_ =~ m/^gi\|(\d+)\|/) {				# For psi-blast files that give gi numbers
 			if (! defined $gi{$1}) {
 				$gi{$1} = 0;
 				$rank{$1} = scalar @gi;
 				push(@gi, $1);
 			}
 		}
+		elsif($on && (index($_, '|') != -1)) {		# For psi-blast files that don't give gi numbers
+			my @tmpl = split /\|/, $_;
+			my $sn = $tmpl[1];
+			if (! defined $gi{$sn}) {
+				$gi{$sn} = 0;
+				$rank{$sn} = scalar @gi;
+				push(@gi, $sn);
+			}
+		}
+
 		if ($on && $_ =~ m/^Query_1/ && $go < 0) {
 			$go = $count - 1;
 			chomp $_;
@@ -543,7 +549,9 @@ sub reader_n4 {
 		}
 	}
 	close $f || die;
+	
 	@{$self->{"list"}} = @gi;	## copy whole hit-list
+	###################################### print "@gi"; ####################################################
 	chomp $qy;
 	$last_substr = $self->findpos_n4($qy, 1);	## find "substr" for the last block
 		
