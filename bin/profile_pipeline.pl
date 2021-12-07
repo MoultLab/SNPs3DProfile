@@ -8,8 +8,6 @@ use Getopt::Long;
 #### 1) When mutation is precomputed, compile feature, run SVM, and output score
 #### 2) When mutation is not precomputed, do PSI-BLAST, compute and update table, run SVM, and output score
 
-
-
 if ($#ARGV < 0) {
 	print STDERR "1) $0 options\n";
 	print STDERR "--dbuser (mysql username)\n--dbpass (mysql password)\n--adpass (mysql moult-db admin password, currently not in use)\n--log (logfile)\n--workpath (working path)\n--list (full path and name of the mutation list, no header line)\n--run_psi_blast (boolean 1 or 0, run psi-blast or skip, default 0)\n--model (SVM model, defaut HUWL2)\n--output (result filename, defaut pred_HWUL2.txt)\n--table (name of the entropy table, default SNPs3D_Profile_2017_precomputed_psimtx_500_1_0_JAN2018)\n--blastbin (path to the psiblast, default \"/moulthome/shared/apps/ncbi-blast-2.2.30+/bin/\")\n--blastdb (path to the blast database, default \"/moulthome/yini/share/BLASTDB/nr/nr\")\n--mysqldb (the mysql database to store precomputed features, default SNPs3D_2017)\n";
@@ -111,7 +109,6 @@ if ($rpb ne 0) {
 	}
 	$rpb = 0;
 }
-
 
 ## Use PSSM and entropy information compile and analyze features with SVM    
 if ($rpb eq 0) {
