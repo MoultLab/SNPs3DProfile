@@ -5,13 +5,13 @@ SNPs3DProfile scores the entropic effects of single nucleotide polymorphisms (SN
 For more details about the package, contact John Moult at [jmoult@tunc.org].
 
 ## 2. Liscense
-SNPs3DProfile is [open source?] and is released under the [lisence?] liscence
+SNPs3DProfile is open source and is released under the [insert] liscence
 
 ## 3. Prerequisites
 **Operating System:** UNIX/Linux (64 bit) <br/>
 **Software:** Perl v5.10.1 <br/>
 **3rd Party Applications:** SVM-Light v6.02, BLAST+ 2.2.30 <br/>
-**3rd Party Database:** BLAST database <version?> <br/>
+**3rd Party Database:** BLAST database 2.9.0 <br/>
 
 ## 4. Installation
 Download link for SNPs3DProfile - [https://github.com/MoultLab/SNPs3DProfile](https://github.com/MoultLab/SNPs3DProfile)
