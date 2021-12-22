@@ -44,7 +44,6 @@ system("echo \'$out2\' > $working/prof_lib/fasta/$refseq");
 system("mkdir -p $working/prof_lib/psi/");
 system("mkdir -p $working/prof_lib/mtx/");
 system("$blastbin/psiblast -query $working/prof_lib/fasta/$refseq -db $blastdb -out $working/prof_lib/psi/$refseq.psi -evalue 0.001 -outfmt 4 -show_gis -num_descriptions 500 -num_alignments 500 -num_iterations 3 -max_hsps 1 -num_threads 12 -out_ascii_pssm $working/prof_lib/mtx/$refseq.mtx > $working/prof_lib/psi/log.psiblast_$refseq");
-## system("$blastbin/psiblast -query $working/prof_lib/fasta/$refseq -db $blastdb -out $working/prof_lib/psi/$refseq.psi -evalue 0.001 -outfmt 4 -show_gis -num_descriptions 500 -num_alignments 500 -num_iterations 3 -max_hsps 1 -num_threads 12 -out_ascii_pssm $working/prof_lib/mtx/$refseq.mtx > $working/prof_lib/psi/log.psiblast_$refseq");
 
 ##### update the PSSM numbers from the mtx file #####
 my $dbh = DBI->connect("DBI:mysql:$mysqldb:$dbserver", $dbuser, $dbpass, {RaiseError=>1, AutoCommit=>1});
