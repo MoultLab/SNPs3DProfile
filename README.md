@@ -1,4 +1,4 @@
-# SNPs3DProfile
+# SNPs3DProfile [Packaging under progress]
 
 ## 1. Introduction
 SNPs3DProfile scores the entropic effects of single nucleotide polymorphisms (SNPs) to predict their deleterious effects  
