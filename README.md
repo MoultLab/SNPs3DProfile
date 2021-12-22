@@ -39,7 +39,7 @@ All arguments are given as strings unless otherwise stated.  Arguments include: 
 ```--log               Log file.  Set to "log.profile_pipeline" by default ```<br/>
        
 ## 6. Contributions
-Ezra Cho - tested pipeline, packaged dependencies, shipped code to GitHub, generated testset
+Ezra Cho - tested pipeline, packaged dependencies, shipped code to GitHub, generated testset, and benchmarked code
 
 ## 7. Publication
 Yue, P., &amp; Moult, J. (2006). Identification and Analysis of Deleterious Human SNPs. Journal of Molecular Biology, 356(5), 1263-1274. [doi:10.1016/j.jmb.2005.12.025](https://pubmed.ncbi.nlm.nih.gov/16412461/) <br/>
