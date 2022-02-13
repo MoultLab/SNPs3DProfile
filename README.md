@@ -37,6 +37,7 @@ All arguments are given as strings unless otherwise stated.  Arguments include: 
 ```--rpb               Run PSI-BLAST.  Default integer value set to 1 to run on missing sequences; set to 0 otherwise   ```<br/>
 ```--output            Output file.  Set to "pred_HWUL2.txt" by default ```<br/>
 ```--log               Log file.  Set to "log.profile_pipeline" by default ```<br/>
+An example set of 300 sequences and its subsequent output are given under the testdata directory.  
        
 ## 6. Contributions
 Ezra Cho - tested pipeline, packaged dependencies, shipped code to GitHub, generated testset, and benchmarked code
