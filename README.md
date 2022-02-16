@@ -10,7 +10,7 @@ SNPs3DProfile is open source and is released under the [insert] liscence
 ## 3. Prerequisites
 **Operating System:** UNIX/Linux (64 bit) <br/>
 **Software:** Perl v5.10.1 <br/>
-**3rd Party Applications:** SVM-Light v6.02, BLAST+ 2.2.30 <br/>
+**3rd Party Applications:** SVM-Light v6.02, BLAST+ 2.10.1 (or later) <br/>
 **3rd Party Database:** BLAST database 2.9.0 <br/>
 
 ## 4. Installation
@@ -37,7 +37,7 @@ All arguments are given as strings unless otherwise stated.  Arguments include: 
 ```--rpb               Run PSI-BLAST.  Default integer value set to 1 to run on missing sequences; set to 0 otherwise   ```<br/>
 ```--output            Output file.  Set to "pred_HWUL2.txt" by default ```<br/>
 ```--log               Log file.  Set to "log.profile_pipeline" by default ```<br/>
-An example set of 300 sequences and its subsequent output are given under the testdata directory.  
+An example set of 300 sequences and its subsequent output are given under the testdata directory.
        
 ## 6. Contributions
 Ezra Cho - tested pipeline, packaged dependencies, shipped code to GitHub, generated testset, and benchmarked code
